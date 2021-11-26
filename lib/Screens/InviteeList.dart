@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
-import 'package:beyya/CustomWidgets/ErrorAlert.dart';
-import 'package:beyya/CustomWidgets/SwipeLeftBackground.dart';
-import 'package:beyya/CustomWidgets/SwipeRightBackground.dart';
+import 'package:repeat/CustomWidgets/ErrorAlert.dart';
+import 'package:repeat/CustomWidgets/SwipeLeftBackground.dart';
+import 'package:repeat/CustomWidgets/SwipeRightBackground.dart';
 
-import 'package:beyya/Screens/SendInvite.dart';
+import 'package:repeat/Screens/SendInvite.dart';
 
-import 'package:beyya/Services/DatabaseServices.dart';
+import 'package:repeat/Services/DatabaseServices.dart';
 
 class InviteeList extends StatelessWidget {
   const InviteeList({

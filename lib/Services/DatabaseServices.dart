@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:beyya/Models/InvitationPendingResponse.dart';
-import 'package:beyya/Models/Item.dart';
-import 'package:beyya/Models/ListInUse.dart';
-import 'package:beyya/Models/UserDocument.dart';
+import 'package:repeat/Models/InvitationPendingResponse.dart';
+import 'package:repeat/Models/Item.dart';
+import 'package:repeat/Models/ListInUse.dart';
+import 'package:repeat/Models/UserDocument.dart';
 
 class DatabaseService {
   final String dbOwner;
@@ -11,7 +11,7 @@ class DatabaseService {
   DatabaseService({this.dbOwner, this.dbDocId});
 
   static CollectionReference<Map<String, dynamic>> collectionReference =
-      FirebaseFirestore.instance.collection('beyya');
+      FirebaseFirestore.instance.collection('repeat');
 
   // static CollectionReference collectionReference =
   // FirebaseFirestore.instance.collection('beyyaTest');

@@ -31,7 +31,7 @@ class Loading extends StatelessWidget {
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Beyya',
+                    'Repeat',
                     style: GoogleFonts.baumans(
                         textStyle: TextStyle(
                             color: Colors.white,

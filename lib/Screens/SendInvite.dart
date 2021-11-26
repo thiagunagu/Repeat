@@ -6,11 +6,11 @@ import 'package:another_flushbar/flushbar.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:beyya/CustomWidgets/ErrorAlert.dart';
+import 'package:repeat/CustomWidgets/ErrorAlert.dart';
 
-import 'package:beyya/Models/SignedInUser.dart';
+import 'package:repeat/Models/SignedInUser.dart';
 
-import 'package:beyya/Services/DatabaseServices.dart';
+import 'package:repeat/Services/DatabaseServices.dart';
 
 class SendInvite extends StatefulWidget {
   @override
@@ -76,7 +76,7 @@ class _SendInviteState extends State<SendInvite> {
                         Flushbar(
                           flushbarPosition: FlushbarPosition.TOP,
                           message:
-                              'Invite sent\. Ask $_inviteeEmail to login to Beyya to see your invite.',
+                              'Invite sent\. Ask $_inviteeEmail to login to Repeat to see your invite.',
                           duration: Duration(seconds: 6),
                           margin: EdgeInsets.all(8),
                           borderRadius: BorderRadius.all(Radius.circular(10)),

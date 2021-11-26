@@ -38,7 +38,7 @@ class ErrorScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Beyya',
+                    'Repeat',
                     style: GoogleFonts.baumans(
                         textStyle: TextStyle(
                             color: Colors.red[400],

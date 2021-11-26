@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
-import 'package:beyya/CustomWidgets/ErrorAlert.dart';
+import 'package:repeat/CustomWidgets/ErrorAlert.dart';
 
-import 'package:beyya/Services/DatabaseServices.dart';
+import 'package:repeat/Services/DatabaseServices.dart';
 
 class StoppedSharingNotification extends StatelessWidget {
   const StoppedSharingNotification({

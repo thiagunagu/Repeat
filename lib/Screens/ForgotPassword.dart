@@ -4,9 +4,9 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 import 'package:another_flushbar/flushbar.dart';
 
-import 'package:beyya/CustomWidgets/ErrorAlert.dart';
+import 'package:repeat/CustomWidgets/ErrorAlert.dart';
 
-import 'package:beyya/Services/AuthService.dart';
+import 'package:repeat/Services/AuthService.dart';
 
 class ForgotPassword extends StatefulWidget {
   @override

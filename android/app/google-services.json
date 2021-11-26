@@ -1,42 +1,41 @@
 {
   "project_info": {
-    "project_number": "926956597160",
-    "firebase_url": "https://beyya-4c320.firebaseio.com",
-    "project_id": "beyya-4c320",
-    "storage_bucket": "beyya-4c320.appspot.com"
+    "project_number": "534569205574",
+    "project_id": "repeat-ea59b",
+    "storage_bucket": "repeat-ea59b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:926956597160:android:b74b68491795cf7367f79d",
+        "mobilesdk_app_id": "1:534569205574:android:8da18020f1495166e02f47",
         "android_client_info": {
-          "package_name": "com.teambeyya.beyya"
+          "package_name": "com.teambeyya.repeat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "926956597160-960h1mligibrl37fabp8v8ltiic55vda.apps.googleusercontent.com",
+          "client_id": "534569205574-o1ijvdnljsdud5km32a3mblfueg19orv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.teambeyya.beyya",
+            "package_name": "com.teambeyya.repeat",
             "certificate_hash": "ceb5fdab0bbdf64f15c0f70891a2a681d6082d84"
           }
         },
         {
-          "client_id": "926956597160-ckf2jngal8saq2ir4dc7972r8m176tnt.apps.googleusercontent.com",
+          "client_id": "534569205574-kevq7ejkrnrfbgmbuf0eiokb5ha0i4pk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBhKUwHoCn_Fra9CXiT4MtBiFKHsAKzg0M"
+          "current_key": "AIzaSyBY8se89LcEnMsFW6gPlE7QCf_kE2arigA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "926956597160-ckf2jngal8saq2ir4dc7972r8m176tnt.apps.googleusercontent.com",
+              "client_id": "534569205574-kevq7ejkrnrfbgmbuf0eiokb5ha0i4pk.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

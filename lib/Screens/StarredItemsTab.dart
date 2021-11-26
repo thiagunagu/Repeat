@@ -5,17 +5,17 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:beyya/CustomWidgets/ErrorAlert.dart';
-import 'package:beyya/CustomWidgets/ItemTile.dart';
-import 'package:beyya/CustomWidgets/StoreFilterDropdown.dart';
-import 'package:beyya/CustomWidgets/SwipeLeftBackground.dart';
-import 'package:beyya/CustomWidgets/SwipeRightBackground.dart';
-import 'package:beyya/CustomWidgets/ItemFilterProvider.dart';
+import 'package:repeat/CustomWidgets/ErrorAlert.dart';
+import 'package:repeat/CustomWidgets/ItemTile.dart';
+import 'package:repeat/CustomWidgets/StoreFilterDropdown.dart';
+import 'package:repeat/CustomWidgets/SwipeLeftBackground.dart';
+import 'package:repeat/CustomWidgets/SwipeRightBackground.dart';
+import 'package:repeat/CustomWidgets/ItemFilterProvider.dart';
 
-import 'package:beyya/Models/Item.dart';
-import 'package:beyya/Models/UserDocument.dart';
+import 'package:repeat/Models/Item.dart';
+import 'package:repeat/Models/UserDocument.dart';
 
-import 'package:beyya/Services/DatabaseServices.dart';
+import 'package:repeat/Services/DatabaseServices.dart';
 
 class StarredItemsTab extends StatefulWidget {
   @override

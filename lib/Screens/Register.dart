@@ -1,12 +1,12 @@
-import 'package:beyya/CustomWidgets/UserTypeProvider.dart';
+import 'package:repeat/CustomWidgets/UserTypeProvider.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
-import 'package:beyya/CustomWidgets/ErrorAlert.dart';
+import 'package:repeat/CustomWidgets/ErrorAlert.dart';
 
-import 'package:beyya/Services/AuthService.dart';
+import 'package:repeat/Services/AuthService.dart';
 import 'package:provider/provider.dart';
 
 class Register extends StatefulWidget {
@@ -67,7 +67,7 @@ class _RegisterState extends State<Register> {
                     // Padding(
                     //   padding: const EdgeInsets.all(8.0),
                     //   child: Text(
-                    //     'Beyya',
+                    //     'Repeat',
                     //     style: GoogleFonts.baumans(
                     //         textStyle: TextStyle(
                     //             color: Colors.red[400],

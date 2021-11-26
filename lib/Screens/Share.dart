@@ -6,16 +6,16 @@ import 'package:another_flushbar/flushbar.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:beyya/Models/InvitationPendingResponse.dart';
-import 'package:beyya/Models/SignedInUser.dart';
-import 'package:beyya/Models/UserDocument.dart';
+import 'package:repeat/Models/InvitationPendingResponse.dart';
+import 'package:repeat/Models/SignedInUser.dart';
+import 'package:repeat/Models/UserDocument.dart';
 
-import 'package:beyya/Screens/InviteeList.dart';
-import 'package:beyya/Screens/PendingInvitation.dart';
-import 'package:beyya/Screens/SharingStatus.dart';
-import 'package:beyya/Screens/StoppedSharingNotification.dart';
+import 'package:repeat/Screens/InviteeList.dart';
+import 'package:repeat/Screens/PendingInvitation.dart';
+import 'package:repeat/Screens/SharingStatus.dart';
+import 'package:repeat/Screens/StoppedSharingNotification.dart';
 
-import 'package:beyya/Screens/SendInvite.dart';
+import 'package:repeat/Screens/SendInvite.dart';
 
 class Share extends StatefulWidget {
   @override

@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:beyya/Models/SignedInUser.dart';
+import 'package:repeat/Models/SignedInUser.dart';
 
-import 'package:beyya/Services/DatabaseServices.dart';
+import 'package:repeat/Services/DatabaseServices.dart';
 
 
 class AuthService {

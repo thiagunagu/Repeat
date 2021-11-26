@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:beyya/Screens/ForgotPassword.dart';
-import 'package:beyya/Screens/Login.dart';
-import 'package:beyya/Screens/Register.dart';
+import 'package:repeat/Screens/ForgotPassword.dart';
+import 'package:repeat/Screens/Login.dart';
+import 'package:repeat/Screens/Register.dart';
 
 class Startup extends StatelessWidget {
   @override

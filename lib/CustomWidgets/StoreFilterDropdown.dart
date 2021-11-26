@@ -4,7 +4,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:beyya/Models/UserDocument.dart';
+import 'package:repeat/Models/UserDocument.dart';
 
 class StoreFilterDropdown extends StatelessWidget {
   @override

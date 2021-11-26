@@ -168,7 +168,7 @@
 					<string>$(PROJECT_DIR)/Flutter</string>
 				</array>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>com.teambeyya.beyya</string>
+				<string>com.teambeyya.repeat</string>
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
 				<key>SWIFT_OBJC_BRIDGING_HEADER</key>
@@ -888,7 +888,7 @@
 					<string>$(PROJECT_DIR)/Flutter</string>
 				</array>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>com.teambeyya.beyya</string>
+				<string>com.teambeyya.repeat</string>
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
 				<key>SWIFT_OBJC_BRIDGING_HEADER</key>
@@ -934,7 +934,7 @@
 					<string>$(PROJECT_DIR)/Flutter</string>
 				</array>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>com.teambeyya.beyya</string>
+				<string>com.teambeyya.repeat</string>
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
 				<key>SWIFT_OBJC_BRIDGING_HEADER</key>

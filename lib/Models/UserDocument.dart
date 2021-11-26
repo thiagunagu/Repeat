@@ -1,6 +1,6 @@
 // Model to stream the entire user document or the shared document from firestore.
 
-import 'package:beyya/Models/Item.dart';
+import 'package:repeat/Models/Item.dart';
 
 abstract class UserDocument {}
 

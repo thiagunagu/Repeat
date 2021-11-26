@@ -4,17 +4,17 @@ import 'package:another_flushbar/flushbar.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:beyya/CustomWidgets/ErrorAlert.dart';
-import 'package:beyya/CustomWidgets/SwipeLeftBackground.dart';
-import 'package:beyya/CustomWidgets/SwipeRightBackground.dart';
+import 'package:repeat/CustomWidgets/ErrorAlert.dart';
+import 'package:repeat/CustomWidgets/SwipeLeftBackground.dart';
+import 'package:repeat/CustomWidgets/SwipeRightBackground.dart';
 
-import 'package:beyya/Models/Item.dart';
-import 'package:beyya/Models/UserDocument.dart';
+import 'package:repeat/Models/Item.dart';
+import 'package:repeat/Models/UserDocument.dart';
 
-import 'package:beyya/Screens/AddCategory.dart';
-import 'package:beyya/Screens/EditCategory.dart';
+import 'package:repeat/Screens/AddCategory.dart';
+import 'package:repeat/Screens/EditCategory.dart';
 
-import 'package:beyya/Services/DatabaseServices.dart';
+import 'package:repeat/Services/DatabaseServices.dart';
 
 class ShowCategories extends StatelessWidget {
   @override

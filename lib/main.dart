@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:beyya/CustomWidgets/UserTypeProvider.dart';
+import 'package:repeat/CustomWidgets/UserTypeProvider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -11,29 +11,29 @@ import 'package:flutter/services.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:beyya/Models/InvitationPendingResponse.dart';
-import 'package:beyya/Models/ListInUse.dart';
-import 'package:beyya/Models/SignedInUser.dart';
-import 'package:beyya/Models/UserDocument.dart';
+import 'package:repeat/Models/InvitationPendingResponse.dart';
+import 'package:repeat/Models/ListInUse.dart';
+import 'package:repeat/Models/SignedInUser.dart';
+import 'package:repeat/Models/UserDocument.dart';
 
-import 'package:beyya/Screens/Alert.dart';
-import 'package:beyya/Screens/Settings.dart';
-import 'package:beyya/Screens/ChangePassword.dart';
-import 'package:beyya/Screens/DeleteAccount.dart';
-import 'package:beyya/Screens/ErrorScreen.dart';
-import 'package:beyya/Screens/ForgotPassword.dart';
-import 'package:beyya/Screens/Share.dart';
-import 'package:beyya/Screens/Loading.dart';
-import 'package:beyya/Screens/ShowCategories.dart';
-import 'package:beyya/Screens/ShowStores.dart';
-import 'package:beyya/Screens/ShowTabs.dart';
+import 'package:repeat/Screens/Alert.dart';
+import 'package:repeat/Screens/Settings.dart';
+import 'package:repeat/Screens/ChangePassword.dart';
+import 'package:repeat/Screens/DeleteAccount.dart';
+import 'package:repeat/Screens/ErrorScreen.dart';
+import 'package:repeat/Screens/ForgotPassword.dart';
+import 'package:repeat/Screens/Share.dart';
+import 'package:repeat/Screens/Loading.dart';
+import 'package:repeat/Screens/ShowCategories.dart';
+import 'package:repeat/Screens/ShowStores.dart';
+import 'package:repeat/Screens/ShowTabs.dart';
 
-import 'package:beyya/Services/AuthService.dart';
-import 'package:beyya/Services/DatabaseServices.dart';
-import 'package:beyya/Services/KeyboardHeightProvider.dart';
+import 'package:repeat/Services/AuthService.dart';
+import 'package:repeat/Services/DatabaseServices.dart';
+import 'package:repeat/Services/KeyboardHeightProvider.dart';
 
-import 'package:beyya/CustomWidgets/StoreFilterDropdown.dart';
-import 'package:beyya/CustomWidgets/ItemFilterProvider.dart';
+import 'package:repeat/CustomWidgets/StoreFilterDropdown.dart';
+import 'package:repeat/CustomWidgets/ItemFilterProvider.dart';
 
 import 'Screens/Login.dart';
 import 'Screens/Register.dart';
@@ -117,7 +117,7 @@ class _InitializeFirebaseState extends State<InitializeFirebase> {
                 errorMessage: snapshot.error.toString(),
               );
             } else {
-              //return Beyya();
+              //return Repeat();
               return UserType();
             }
             break;
@@ -134,13 +134,13 @@ class UserType extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => UserTypeProvider(),
-      child: Beyya(),
+      child: Repeat(),
     );
   }
 }
 
 //Root widget; rebuilds when the auth state changes (signing in, signing out).
-class Beyya extends StatelessWidget {
+class Repeat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(

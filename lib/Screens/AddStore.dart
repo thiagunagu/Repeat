@@ -6,12 +6,12 @@ import 'package:another_flushbar/flushbar.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:beyya/CustomWidgets/ErrorAlert.dart';
+import 'package:repeat/CustomWidgets/ErrorAlert.dart';
 
-import 'package:beyya/Models/ListInUse.dart';
-import 'package:beyya/Models/UserDocument.dart';
+import 'package:repeat/Models/ListInUse.dart';
+import 'package:repeat/Models/UserDocument.dart';
 
-import 'package:beyya/Services/DatabaseServices.dart';
+import 'package:repeat/Services/DatabaseServices.dart';
 
 class AddStore extends StatefulWidget {
   @override

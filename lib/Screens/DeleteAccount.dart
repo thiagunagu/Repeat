@@ -4,14 +4,14 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:beyya/CustomWidgets/ErrorAlert.dart';
-import 'package:beyya/CustomWidgets/StatusAlert.dart';
+import 'package:repeat/CustomWidgets/ErrorAlert.dart';
+import 'package:repeat/CustomWidgets/StatusAlert.dart';
 
-import 'package:beyya/Models/SignedInUser.dart';
-import 'package:beyya/Models/UserDocument.dart';
+import 'package:repeat/Models/SignedInUser.dart';
+import 'package:repeat/Models/UserDocument.dart';
 
-import 'package:beyya/Services/AuthService.dart';
-import 'package:beyya/Services/DatabaseServices.dart';
+import 'package:repeat/Services/AuthService.dart';
+import 'package:repeat/Services/DatabaseServices.dart';
 
 class DeleteAccount extends StatelessWidget {
   final TextEditingController _currentPassword = TextEditingController();
@@ -72,7 +72,7 @@ class DeleteAccount extends StatelessWidget {
                                 });
                                 return StatusAlert(
                                   statusMessage:
-                                      'Thanks for trying Beyya. Deleting your account and data... ',
+                                      'Thanks for trying Repeat. Deleting your account and data... ',
                                 );
                               });
                           final DatabaseService _inviterDb =
@@ -104,7 +104,7 @@ class DeleteAccount extends StatelessWidget {
                                 });
                                 return StatusAlert(
                                   statusMessage:
-                                      'Thanks for trying Beyya. Deleting your account and data... ',
+                                      'Thanks for trying Repeat. Deleting your account and data... ',
                                 );
                               });
                           final _inviteeDb = DatabaseService(

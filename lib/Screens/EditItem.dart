@@ -6,15 +6,15 @@ import 'package:provider/provider.dart';
 
 import 'package:another_flushbar/flushbar.dart';
 
-import 'package:beyya/CustomWidgets/ErrorAlert.dart';
+import 'package:repeat/CustomWidgets/ErrorAlert.dart';
 
-import 'package:beyya/Models/UserDocument.dart';
+import 'package:repeat/Models/UserDocument.dart';
 
-import 'package:beyya/Services/DatabaseServices.dart';
-import 'package:beyya/Services/KeyboardHeightProvider.dart';
+import 'package:repeat/Services/DatabaseServices.dart';
+import 'package:repeat/Services/KeyboardHeightProvider.dart';
 
-import 'package:beyya/Screens/CategoryQuickAdd.dart';
-import 'package:beyya/Screens/StoreQuickAdd.dart';
+import 'package:repeat/Screens/CategoryQuickAdd.dart';
+import 'package:repeat/Screens/StoreQuickAdd.dart';
 
 class EditItem extends StatefulWidget {
   final String currentItem;

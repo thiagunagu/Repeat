@@ -15,11 +15,11 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.teambeyya.beyya</string>
+	<string>com.teambeyya.repeat</string>
 	<key>PROJECT_ID</key>
-	<string>beyya-4c320</string>
+	<string>repeat-4c320</string>
 	<key>STORAGE_BUCKET</key>
-	<string>beyya-4c320.appspot.com</string>
+	<string>repeat-4c320.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,6 +33,6 @@
 	<key>GOOGLE_APP_ID</key>
 	<string>1:926956597160:ios:150f9d1c21a6135c67f79d</string>
 	<key>DATABASE_URL</key>
-	<string>https://beyya-4c320.firebaseio.com</string>
+	<string>https://repeat-4c320.firebaseio.com</string>
 </dict>
 </plist>

@@ -1,16 +1,16 @@
-import 'package:beyya/CustomWidgets/UserTypeProvider.dart';
+import 'package:repeat/CustomWidgets/UserTypeProvider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:beyya/CustomWidgets/ErrorAlert.dart';
-import 'package:beyya/CustomWidgets/StatusAlert.dart';
+import 'package:repeat/CustomWidgets/ErrorAlert.dart';
+import 'package:repeat/CustomWidgets/StatusAlert.dart';
 
-import 'package:beyya/Models/SignedInUser.dart';
+import 'package:repeat/Models/SignedInUser.dart';
 
-import 'package:beyya/Services/AuthService.dart';
+import 'package:repeat/Services/AuthService.dart';
 
 class ChangePassword extends StatefulWidget {
   @override

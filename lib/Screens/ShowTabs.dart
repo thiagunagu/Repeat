@@ -1,5 +1,5 @@
-import 'package:beyya/CustomWidgets/ItemFilterProvider.dart';
-import 'package:beyya/CustomWidgets/UserTypeProvider.dart';
+import 'package:repeat/CustomWidgets/ItemFilterProvider.dart';
+import 'package:repeat/CustomWidgets/UserTypeProvider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -10,15 +10,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:beyya/Models/InvitationPendingResponse.dart';
-import 'package:beyya/Models/SignedInUser.dart';
-import 'package:beyya/Models/UserDocument.dart';
+import 'package:repeat/Models/InvitationPendingResponse.dart';
+import 'package:repeat/Models/SignedInUser.dart';
+import 'package:repeat/Models/UserDocument.dart';
 
-import 'package:beyya/CustomWidgets/StoreFilterDropdown.dart';
+import 'package:repeat/CustomWidgets/StoreFilterDropdown.dart';
 
-import 'package:beyya/Screens/AddItem.dart';
-import 'package:beyya/Screens/CheckList.dart';
-import 'package:beyya/Screens/StarredItemsTab.dart';
+import 'package:repeat/Screens/AddItem.dart';
+import 'package:repeat/Screens/CheckList.dart';
+import 'package:repeat/Screens/StarredItemsTab.dart';
 
 
 import 'package:in_app_review/in_app_review.dart';
