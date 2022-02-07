@@ -1,3 +1,4 @@
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:repeat/CustomWidgets/ItemFilterProvider.dart';
 import 'package:repeat/CustomWidgets/UserTypeProvider.dart';
 import 'package:flutter/material.dart';
@@ -14,17 +15,11 @@ import 'package:repeat/Models/InvitationPendingResponse.dart';
 import 'package:repeat/Models/SignedInUser.dart';
 import 'package:repeat/Models/UserDocument.dart';
 
-import 'package:repeat/CustomWidgets/StoreFilterDropdown.dart';
-
 import 'package:repeat/Screens/AddItem.dart';
 import 'package:repeat/Screens/CheckList.dart';
 import 'package:repeat/Screens/StarredItemsTab.dart';
 
-
 import 'package:in_app_review/in_app_review.dart';
-
-
-
 
 
 class ShowTabs extends StatefulWidget {
@@ -33,21 +28,36 @@ class ShowTabs extends StatefulWidget {
 }
 
 class _ShowTabsState extends State<ShowTabs> {
-
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
-  bool isSearching = false;
   final InAppReview inAppReview = InAppReview.instance;
+  bool bottomSheetActive = false;
+  double bottomSheetHeight=0;
+  final bottomSheetKey = GlobalKey();
+
 
   @override
   Widget build(BuildContext context) {
     bool _numOfItemsLimitReached = false;
     var userEmail = Provider.of<SignedInUser>(context, listen: true).userEmail;
+
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      final sheetHeight=bottomSheetKey.currentContext?.size?.height??0;
+      if(sheetHeight!=bottomSheetHeight&&bottomSheetActive){
+        setState(() {
+          bottomSheetHeight=sheetHeight;
+        });
+      }
+    });
+
     return Scaffold(
-      appBar:AppBar(
+      appBar: AppBar(
         leading: Stack(
           children: [
             IconButton(
-              icon: Icon(Icons.menu,color: Colors.white,),
+              icon: Icon(
+                Icons.menu,
+                color: Colors.white,
+              ),
               alignment: Alignment.bottomRight,
               onPressed: () => _drawerKey.currentState.openDrawer(),
             ),
@@ -58,7 +68,7 @@ class _ShowTabsState extends State<ShowTabs> {
                         Provider.of<InvitationPendingResponse>(context)
                                 .emailOfInviter !=
                             null)) {
-                  return BlueBallNotification();
+                  return PositionedRedBall();
                 } else {
                   return SizedBox();
                 }
@@ -66,62 +76,7 @@ class _ShowTabsState extends State<ShowTabs> {
             )
           ],
         ),
-        title: Container(
-          padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
-          alignment: Alignment.centerRight,
-          child: isSearching
-              ? TextField(
-                  maxLines: 1,
-                  textAlignVertical: TextAlignVertical.center,
-                  autofocus: true,
-                  onChanged: (newValue) {
-                    Provider.of<ItemFilterProvider>(context, listen: false)
-                        .changeItemFilter(newValue: newValue.toLowerCase());
-                  },
-                  decoration: InputDecoration(
-                      isDense: true,
-                      contentPadding: EdgeInsets.all(12.0),
-                      border: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.all(const Radius.circular(5.0))),
-                      filled: true,
-                      fillColor: Colors.white,
-                      suffixIcon: IconButton(
-                        icon: Icon(Icons.close),
-                        color: Colors.grey,
-                        onPressed: () {
-                          Provider.of<ItemFilterProvider>(context,
-                                  listen: false)
-                              .changeItemFilter(newValue: '');
-                          setState(() {
-                            isSearching = false;
-                          });
-                        },
-                      )),
-                )
-              : IconButton(
-                  icon: Icon(Icons.search,color: Colors.white,),
-                  onPressed: () {
-                    setState(() {
-                      isSearching = true;
-                    });
-                  },
-                ),
-        ),
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(
-                left: 8.0, right: 8.0, top: 8.0, bottom: 8.0),
-            child: Row(
-              children: [
-                StoreFilterDropdown(),
-              ],
-            ),
-          ),
-        ],
-        bottom: TabBar(
-
-            tabs: [
+        bottom: TabBar(tabs: [
           Tab(
             child: Text(
               'CHECKLIST',
@@ -171,9 +126,12 @@ class _ShowTabsState extends State<ShowTabs> {
           )
         ]),
       ),
-      body: SafeArea(
-        child: TabBarView(
-          children: <Widget>[CheckList(), StarredItemsTab()],
+      body: Padding(
+        padding: EdgeInsets.only(bottom: bottomSheetHeight),
+        child: SafeArea(
+          child: TabBarView(
+            children: <Widget>[CheckList(), StarredItemsTab()],
+          ),
         ),
       ),
       key: _drawerKey,
@@ -183,7 +141,7 @@ class _ShowTabsState extends State<ShowTabs> {
           children: <Widget>[
             userEmail == 'anonymousUser'
                 ? Container(
-                    height: MediaQuery.of(context).padding.top*2,
+                    height: MediaQuery.of(context).padding.top * 2,
                     child: DrawerHeader(
                       child: Container(),
                       decoration: BoxDecoration(
@@ -202,11 +160,11 @@ class _ShowTabsState extends State<ShowTabs> {
                               userEmail[0].toUpperCase(),
                               style: GoogleFonts.baumans(
                                   textStyle: TextStyle(
-                                      color: Colors.red[500],
+                                      color: Colors.blue[900],
                                       fontSize: 45.0,
                                       fontWeight: FontWeight.w400)),
                             ),
-                            foregroundColor: Colors.red,
+                            foregroundColor: Colors.blue[900],
                             backgroundColor: Colors.white,
                             maxRadius: 35,
                           ),
@@ -225,20 +183,6 @@ class _ShowTabsState extends State<ShowTabs> {
                       color: Theme.of(context).primaryColor,
                     ),
                   ),
-            ListTile(
-                leading: Icon(Icons.category),
-                title: Text('Categories'),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Navigator.pushNamed(context, '/ShowCategories');
-                }),
-            ListTile(
-                leading: Icon(Icons.store),
-                title: Text('Stores'),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Navigator.pushNamed(context, '/ShowStores');
-                }),
             ListTile(
               leading: Icon(Icons.group),
               title: Text('Share'),
@@ -304,9 +248,7 @@ class _ShowTabsState extends State<ShowTabs> {
                     title: Text('Profile'),
                     onTap: () {
                       Navigator.of(context).pop();
-                      Provider.of<UserTypeProvider>(
-                          context,
-                          listen: false)
+                      Provider.of<UserTypeProvider>(context, listen: false)
                           .setConvertedUserToTrue();
                       Navigator.pushNamed(context, '/Settings');
                     }),
@@ -349,31 +291,67 @@ class _ShowTabsState extends State<ShowTabs> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () async{
-          if (_numOfItemsLimitReached == true) {
-            Flushbar(
-              flushbarPosition: FlushbarPosition.TOP,
-              message:
-                  'You have already reached the maximum number of items allowed. Delete some unused items to make room for new ones.',
-              duration: Duration(seconds: 6),
-              margin: EdgeInsets.all(8),
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            )..show(context);
-          } else {
-            showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              builder: (context) => SingleChildScrollView(child: AddItem()),
-            );
-          }
-        },
-      ),
+      floatingActionButton: Builder(builder: (context) {
+        return FloatingActionButton(
+          child: bottomSheetActive ? Icon(Icons.close) : Icon(FontAwesome5.search_plus),
+          onPressed: () async {
+            if (!bottomSheetActive) {
+              if (_numOfItemsLimitReached == true) {
+                Flushbar(
+                  flushbarPosition: FlushbarPosition.TOP,
+                  message:
+                      'You have already reached the maximum number of items allowed. Delete some unused items to make room for new ones.',
+                  duration: Duration(seconds: 6),
+                  margin: EdgeInsets.all(8),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                )..show(context);
+              } else {
+                // Scaffold.of(context)
+                //     .showBottomSheet<void>((BuildContext context) {
+                //   return SingleChildScrollView(child: AddItem());
+                // });
+                var bottomSheetController = showBottomSheet(
+                    context: context,
+                    builder: (context) => SingleChildScrollView(key:bottomSheetKey,child: AddItem()));
+                bottomSheetController.closed.then((value) {
+                  Provider.of<ItemFilterProvider>(context,
+                      listen: false)
+                      .changeItemFilter(newValue: '');
+                  setState(() {
+                    bottomSheetActive = false;
+                    bottomSheetHeight=0;
+                  });
+                });
+                setState(() {
+                  bottomSheetActive = true;
+                });
+              }
+            } else {
+              Navigator.pop(context);
+              Provider.of<ItemFilterProvider>(context,
+                  listen: false)
+                  .changeItemFilter(newValue: '');
+              setState(() {
+                bottomSheetActive = false;
+                bottomSheetHeight=0;
+              });
+            }
+          },
+        );
+      }),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
+//
+// class FloatingButton extends StatelessWidget {
+//   const FloatingButton({Key key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container();
+//   }
+// }
 
 class RedBallNotification extends StatelessWidget {
   const RedBallNotification({
@@ -398,8 +376,8 @@ class RedBallNotification extends StatelessWidget {
   }
 }
 
-class BlueBallNotification extends StatelessWidget {
-  const BlueBallNotification({
+class PositionedRedBall extends StatelessWidget {
+  const PositionedRedBall({
     Key key,
   }) : super(key: key);
 
@@ -413,7 +391,7 @@ class BlueBallNotification extends StatelessWidget {
         height: 14,
         padding: EdgeInsets.all(40),
         decoration: BoxDecoration(
-          color: Colors.indigo,
+          color: Colors.red[500],
           borderRadius: BorderRadius.circular(7),
         ),
         constraints: BoxConstraints(

@@ -65,7 +65,7 @@ class _SendInviteState extends State<SendInvite> {
                     Icons.person_add,
                     size: 30,
                   ),
-                  color: Colors.red[500],
+                  color: Colors.blue[900],
                   onPressed: () async {
                     try {
                       if (_sendInviteKey.currentState.validate()) {

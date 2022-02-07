@@ -99,7 +99,7 @@ class _AlertState extends State<Alert> {
                                 //borderRadius: BorderRadius.circular(18.0),
                                 //side: BorderSide(color: Colors.red)),
                                 //textColor: Colors.white,
-                                //color: Colors.red[500],
+                                //color: Colors.blue[900],
                                 child: Text('Decline'),
                                 style: styleYellow,
                                 //elevation: 4.0,

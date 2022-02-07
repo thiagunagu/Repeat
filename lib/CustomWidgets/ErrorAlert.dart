@@ -13,7 +13,7 @@ class ErrorAlert extends StatelessWidget {
     final ButtonStyle style = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 14, color: Colors.white),
         elevation: 4.0,
-        primary: Colors.red[500],
+        primary: Colors.blue[900],
         shape: StadiumBorder());
     return AlertDialog(
       title: Center(child: Text('Oops!')),

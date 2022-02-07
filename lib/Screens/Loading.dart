@@ -9,9 +9,9 @@ class Loading extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         indicatorColor: Colors.white,
-        primaryColor: Colors.red[500],
+        primaryColor: Colors.blue[900],
         colorScheme: ColorScheme.fromSwatch()
-            .copyWith(primary: Colors.red[500], secondary: Colors.red[500]),
+            .copyWith(primary: Colors.blue[900], secondary: Colors.blue[900]),
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             primary: Colors.blueAccent, // This is a custom color variable
@@ -19,7 +19,7 @@ class Loading extends StatelessWidget {
         ),
       ),
       home: Scaffold(
-        backgroundColor: Colors.red[500],
+        backgroundColor: Colors.blue[900],
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -27,7 +27,7 @@ class Loading extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  color: Colors.red[500],
+                  color: Colors.blue[900],
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(8.0),
                   child: Text(

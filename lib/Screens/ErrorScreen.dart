@@ -14,13 +14,13 @@ class ErrorScreen extends StatelessWidget {
         .recordError(errorMessage, null, reason: 'Error screen');
     return MaterialApp(
       theme: ThemeData(
-          primaryColor: Colors.red[500],
+          primaryColor: Colors.blue[900],
           indicatorColor: Colors.white,
           buttonBarTheme: ButtonBarThemeData(
             alignment: MainAxisAlignment.center,
           ),
           colorScheme: ColorScheme.fromSwatch()
-              .copyWith(primary: Colors.red[500], secondary: Colors.red[500]),
+              .copyWith(primary: Colors.blue[900], secondary: Colors.blue[900]),
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             primary: Colors.blueAccent, // This is a custom color variable
@@ -41,7 +41,7 @@ class ErrorScreen extends StatelessWidget {
                     'Repeat',
                     style: GoogleFonts.baumans(
                         textStyle: TextStyle(
-                            color: Colors.red[400],
+                            color: Colors.blue[900],
                             fontSize: 40.0,
                             fontWeight: FontWeight.w400)),
                   ),

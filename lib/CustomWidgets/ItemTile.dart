@@ -5,16 +5,12 @@ import 'package:repeat/Screens/EditItem.dart';
 class ItemTile extends StatelessWidget {
   final String docIdOfListInUse;
   final String item; //potato, avocado, etc
-  final String store; // WalMart, CostCo
-  final String category; //Produce, Dairy
   final bool star;// starred item or unstarred item
   final Function toggleStar;
 
   ItemTile({
     this.docIdOfListInUse,
     this.item,
-    this.store,
-    this.category,
     this.star,
     this.toggleStar
   });
@@ -28,10 +24,6 @@ class ItemTile extends StatelessWidget {
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-              child: Text(store, style: TextStyle(color: Colors.grey)),
-            ),
             Icon(star ? Icons.star : Icons.star_border),
           ],
         ),
@@ -42,8 +34,6 @@ class ItemTile extends StatelessWidget {
             builder: (context) => SingleChildScrollView(
               child: EditItem(
                 currentItem: item,
-                currentStore: store,
-                currentCategory: category,
                 currentStar: star,
               ),
             ),

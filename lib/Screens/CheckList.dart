@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 
 import 'package:repeat/CustomWidgets/ErrorAlert.dart';
 import 'package:repeat/CustomWidgets/ItemTile.dart';
-import 'package:repeat/CustomWidgets/StoreFilterDropdown.dart';
 import 'package:repeat/CustomWidgets/SwipeLeftBackground.dart';
 import 'package:repeat/CustomWidgets/SwipeRightBackground.dart';
 
@@ -36,101 +35,29 @@ class CheckList extends StatelessWidget {
           );
         } else if (data is UserData) {
           DatabaseService _db = DatabaseService(dbDocId: data.docIdOfListInUse);
-          List<String> _categoriesInUse = [];
           final List<Item> _items = List.from(data.items);
           if (_items.isNotEmpty) {
             _items.sort(
                 (a, b) => a.item.toLowerCase().compareTo(b.item.toLowerCase()));
-            _items.forEach((item) {
-              if (item.store ==
-                      Provider.of<StoreFilterProvider>(context).storeFilter ||
-                  Provider.of<StoreFilterProvider>(context).storeFilter ==
-                      'All stores'&&item.item.toLowerCase().split(' ').any((word) => word.startsWith(Provider.of<ItemFilterProvider>(context).itemFilter))) {
-                _categoriesInUse.add(item.category);
-              }
-            });
-            _categoriesInUse = _categoriesInUse
-                .toSet()
-                .toList(); //converting to set to remove duplicates and again converting back to list
-            _categoriesInUse
-                .sort((a, b) => a.toLowerCase().compareTo(b.toLowerCase()));
-            if (_categoriesInUse.contains('Misc')) {
-              _categoriesInUse.remove('Misc');
-              _categoriesInUse.add('Misc');
-            } //moving 'Misc' to last category
             return ListView.builder(
-              padding: EdgeInsets.all(2.0),
-              //List of categories
-              itemBuilder: (context, categoryIndex) {
-                return ListTile(
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Row(
-                      children: <Widget>[
-                        Flexible(
-                          child: Text(
-                            _categoriesInUse[categoryIndex],
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Container(
-                              height: 0.3,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  subtitle: ListView.builder(
                     padding: EdgeInsets.all(2.0),
-                    //2nd level list - list of items
-                    physics: ClampingScrollPhysics(),
-                    //to prevent scrolling at the second level of nested list
-                    shrinkWrap: true,
-                    //wraps the items under each categories
                     itemBuilder: (
                       context,
                       itemIndex,
                     ) {
-                      return _categoriesInUse[categoryIndex] ==
-                                  _items[itemIndex]
-                                      .category && //filter for _items just under this category
-                          _items[itemIndex].item.toLowerCase().split(' ').any((word) => word.startsWith(Provider.of<ItemFilterProvider>(context).itemFilter))&&
-                              (Provider.of<StoreFilterProvider>(context)
-                                          .storeFilter ==
-                                      _items[itemIndex]
-                                          .store || //if storeFilterDropdown is set to a specific store, filter only for item objects that have this store
-                                  Provider.of<StoreFilterProvider>(context)
-                                          .storeFilter ==
-                                      'All stores') //display items from all stores if the storeFilterDropdown is set to "All stores"
+                      return Provider.of<ItemFilterProvider>(context).itemFilter.any((filter) => _items[itemIndex].item.toLowerCase().split(' ').any((word) => word.startsWith(filter)))
                           ? Dismissible(
                             key: ObjectKey(_items[itemIndex]),
                             child: ItemTile(
                               docIdOfListInUse: data.docIdOfListInUse,
                               item: _items[itemIndex].item,
-                              category: _items[itemIndex].category,
-                              store: _items[itemIndex].store,
                               star: _items[itemIndex].star,
                               toggleStar: () {
                                 String encodedItem =
                                 _db.encodeAsFirebaseKey(text: _items[itemIndex].item);
-                                String encodedCategory =
-                                _db.encodeAsFirebaseKey(text: _items[itemIndex].category);
-                                String encodedStore =
-                                _db.encodeAsFirebaseKey(text: _items[itemIndex].store);
                                 _db.toggleStar(
                                     star: _items[itemIndex].star,
-                                    id: encodedItem +
-                                        encodedCategory +
-                                        encodedStore);
+                                    id: encodedItem);
                               },
                             ),
                             background: SwipeRightBackground(),
@@ -142,16 +69,8 @@ class CheckList extends StatelessWidget {
                                 String encodedItem =
                                     _db.encodeAsFirebaseKey(
                                         text: _items[itemIndex].item);
-                                String encodedCategory =
-                                    _db.encodeAsFirebaseKey(
-                                        text: _items[itemIndex].category);
-                                String encodedStore =
-                                    _db.encodeAsFirebaseKey(
-                                        text: _items[itemIndex].store);
                                 await _db.deleteItem(
-                                    id: encodedItem +
-                                        encodedCategory +
-                                        encodedStore);
+                                    id: encodedItem);
                                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                   content: Text('Deleted "$itemName"'),
                                   action: SnackBarAction(
@@ -160,8 +79,6 @@ class CheckList extends StatelessWidget {
                                     onPressed: () {
                                       _db.addItem(
                                         item: _items[itemIndex].item,
-                                        store: _items[itemIndex].store,
-                                        category: _items[itemIndex].category,
                                         star: _items[itemIndex].star,
                                       );
                                     },
@@ -187,32 +104,16 @@ class CheckList extends StatelessWidget {
                           : SizedBox(); //return an empty box when the ternary operator returns false
                     },
                     itemCount: _items.length,
-                  ),
-                );
-              },
-              itemCount: _categoriesInUse.length,
-            );
+                  );
           } else {
             return GestureDetector(
               child: Center(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/crayon_1538.png',
-                        fit: BoxFit.scaleDown,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16),
-                        child: Text(
-                          'Tap to start building your checklist.',
-                          style: TextStyle(
-                              color: Colors.grey[400], fontSize: 18.0),
-                        ),
-                      ),
-                    ],
+                  child: Text(
+                    'Tap to start building your checklist.',
+                    style: TextStyle(
+                        color: Colors.grey[400], fontSize: 18.0),
                   ),
                 ),
               ),

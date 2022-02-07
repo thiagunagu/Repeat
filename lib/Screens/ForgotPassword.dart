@@ -25,10 +25,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     final ButtonStyle styleRed = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 14, color: Colors.white),
         elevation: 4.0,
-        primary: Colors.red[500],
+        primary: Colors.blue[900],
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18.0),
-            side: BorderSide(color: Colors.red)));
+            side: BorderSide(color: Colors.blue[900],)));
     return Scaffold(
       appBar:AppBar(
         title: Text('Reset Password'),

@@ -20,8 +20,6 @@ class UserData implements UserDocument {
 
   final String removedByInviter;
 
-  final List<String> categories;
-  final List<String> stores;
 
   final List<Item> items;
 
@@ -36,8 +34,6 @@ class UserData implements UserDocument {
     this.docIdOfListInUse,
     this.ownerOfListInUse,
     this.removedByInviter,
-    this.categories,
-    this.stores,
     this.items,
   });
 }

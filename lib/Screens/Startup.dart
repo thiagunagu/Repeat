@@ -11,7 +11,7 @@ class Startup extends StatelessWidget {
       home: Register(),
       theme: ThemeData(
         indicatorColor: Colors.white,
-        primaryColor: Colors.red[500], colorScheme: ColorScheme.fromSwatch().copyWith(primary: Colors.red[500],secondary: Colors.red[500]),
+        primaryColor: Colors.blue[900], colorScheme: ColorScheme.fromSwatch().copyWith(primary: Colors.blue[900],secondary: Colors.blue[900]),
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             primary: Colors.blueAccent, // This is a custom color variable

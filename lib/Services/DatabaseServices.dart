@@ -30,53 +30,30 @@ class DatabaseService {
         'inviteesYetToRespond': [],
         'inviteesWhoDeclined': [],
         'inviteesWhoLeft': [],
-        'categories': [
-          'Dairy',
-          'Produce',
-          'Household',
-          'Misc'
-        ],
-        'stores': [
-          "Farmer's market",
-          'SuperMart',
-          'Wholesale club',
-          'Other'
-        ],
+
         'items': {
-          "TomatoesProduceFarmer's%20market": {
+          "Tomatoes": {
             'item': 'Tomatoes',
-            'category': 'Produce',
-            'store': "Farmer's market",
             'star': true,
           },
-          "OnionProduceFarmer's%20market": {
+          "Onion": {
             'item': 'Onion',
-            'category': 'Produce',
-            'store': "Farmer's market",
             'star': false,
           },
-          "AvocadosProduceFarmer's%20market": {
+          "Avocados": {
             'item': 'Avocados',
-            'category': 'Produce',
-            'store': "Farmer's market",
             'star': true,
           },
-          'Hand%20SoapHouseholdWholesale%20club': {
+          'Hand%20Soap': {
             'item': 'Hand Soap',
-            'category': 'Household',
-            'store': 'Wholesale club',
             'star': false,
           },
-          'MilkDairySuperMart': {
+          'Milk': {
             'item': 'Milk',
-            'category': 'Dairy',
-            'store': 'SuperMart',
             'star': true,
           },
-          'YogurtDairySuperMart': {
+          'Yogurt': {
             'item': 'Yogurt',
-            'category': 'Dairy',
-            'store': 'SuperMart',
             'star': false,
           }
         },
@@ -105,15 +82,6 @@ class DatabaseService {
         docIdOfListInUse: snapshot.data()['docIdOfListInUse'],
         ownerOfListInUse: snapshot.data()['ownerOfListInUse'],
         removedByInviter: snapshot.data()['removedByInviter'],
-        categories: snapshot
-            .data()['categories']
-            .cast<String>()
-            .map<String>((category) {
-          return decodeFirebaseKey(text: category);
-        }).toList(),
-        stores: snapshot.data()['stores'].cast<String>().map<String>((store) {
-          return decodeFirebaseKey(text: store);
-        }).toList(),
         inviteesWhoJoined: snapshot.data()['inviteesWhoJoined'].cast<String>(),
         uidsOfInviteesWhoJoined: snapshot.data()['uidsOfInviteesWhoJoined'],
         inviteesWhoDeclined:
@@ -124,8 +92,6 @@ class DatabaseService {
         items: snapshot.data()['items'].values.map<Item>((itemDetail) {
           return Item(
               item: decodeFirebaseKey(text: itemDetail['item']),
-              store: decodeFirebaseKey(text: itemDetail['store']),
-              category: decodeFirebaseKey(text: itemDetail['category']),
               star: itemDetail['star']);
         }).toList());
   }
@@ -162,20 +128,14 @@ class DatabaseService {
 
   Future addItem({
     String item, //avocado, tomato, etc.
-    String store, //WalMart, CostCo
-    String category, //Produce, Dairy
     bool star, // starred items will show up in the "To buy" tab
   }) async {
     String encodedItem = encodeAsFirebaseKey(text: item);
-    String encodedCategory = encodeAsFirebaseKey(text: category);
-    String encodedStore = encodeAsFirebaseKey(text: store);
     await collectionReference.doc(dbDocId).set(
       {
         'items': {
-          encodedItem + encodedCategory + encodedStore: {
+          encodedItem : {
             'item': encodedItem,
-            'category': encodedCategory,
-            'store': encodedStore,
             'star': star,
           }
         }
@@ -194,50 +154,18 @@ class DatabaseService {
   //version as a new item
   Future editItem({
     String item,
-    String store,
-    String category,
     bool star,
     String id,
   }) async {
     await deleteItem(id: id);
     await addItem(
       item: item,
-      store: store,
-      category: category,
       star: star,
     );
   }
 
   Future toggleStar({bool star, String id}) async {
     await collectionReference.doc(dbDocId).update({'items.$id.star': !star});
-  }
-
-  Future addCategory({String category}) async {
-    String encodedCategory = encodeAsFirebaseKey(text: category);
-    await collectionReference.doc(dbDocId).update({
-      'categories': FieldValue.arrayUnion([encodedCategory])
-    });
-  }
-
-  Future deleteCategory({String category}) async {
-    String encodedCategory = encodeAsFirebaseKey(text: category);
-    await collectionReference.doc(dbDocId).update({
-      'categories': FieldValue.arrayRemove([encodedCategory])
-    });
-  }
-
-  Future addStore({String store}) async {
-    String encodedStore = encodeAsFirebaseKey(text: store);
-    await collectionReference.doc(dbDocId).update({
-      'stores': FieldValue.arrayUnion([encodedStore])
-    });
-  }
-
-  Future deleteStore({String store}) async {
-    String encodedStore = encodeAsFirebaseKey(text: store);
-    await collectionReference.doc(dbDocId).update({
-      'stores': FieldValue.arrayRemove([encodedStore])
-    });
   }
 
   Future setListInUse(

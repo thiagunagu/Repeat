@@ -24,15 +24,11 @@ import 'package:repeat/Screens/ErrorScreen.dart';
 import 'package:repeat/Screens/ForgotPassword.dart';
 import 'package:repeat/Screens/Share.dart';
 import 'package:repeat/Screens/Loading.dart';
-import 'package:repeat/Screens/ShowCategories.dart';
-import 'package:repeat/Screens/ShowStores.dart';
 import 'package:repeat/Screens/ShowTabs.dart';
 
 import 'package:repeat/Services/AuthService.dart';
 import 'package:repeat/Services/DatabaseServices.dart';
-import 'package:repeat/Services/KeyboardHeightProvider.dart';
 
-import 'package:repeat/CustomWidgets/StoreFilterDropdown.dart';
 import 'package:repeat/CustomWidgets/ItemFilterProvider.dart';
 
 import 'Screens/Login.dart';
@@ -171,7 +167,7 @@ class Repeat extends StatelessWidget {
                   debugShowCheckedModeBanner: false,
                   theme: ThemeData(
                       indicatorColor: Colors.white,
-                      primaryColor: Colors.red[500],
+                      primaryColor: Colors.blue[900],
                       textButtonTheme: TextButtonThemeData(
                         style: TextButton.styleFrom(
                           primary: Colors.blueAccent, // This is a custom color variable
@@ -181,8 +177,8 @@ class Repeat extends StatelessWidget {
                         alignment: MainAxisAlignment.center,
                       ),
                       colorScheme: ColorScheme.fromSwatch().copyWith(
-                          primary: Colors.red[500],
-                          secondary: Colors.red[500])),
+                          primary: Colors.blue[900],
+                          secondary: Colors.blue[900])),
                   initialRoute: '/',
                   routes: {
                     '/': (context) => Login(),
@@ -263,22 +259,18 @@ class Root extends StatelessWidget {
                 catchError: (_, err) =>
                     ErrorFetchingUserDocument(err: err.toString()),
               ),
-              ChangeNotifierProvider(
-                  create: (context) => StoreFilterProvider()),
               ChangeNotifierProvider(create: (context) => ItemFilterProvider()),
-              ChangeNotifierProvider(
-                  create: (context) => KeyboardHeightProvider())
             ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                  primaryColor: Colors.red[500],
+                  primaryColor: Colors.blue[900],
                   indicatorColor: Colors.white,
                   buttonBarTheme: ButtonBarThemeData(
                     alignment: MainAxisAlignment.center,
                   ),
                   colorScheme: ColorScheme.fromSwatch().copyWith(
-                      primary: Colors.red[500], secondary: Colors.red[500]),
+                      primary: Colors.blue[900], secondary: Colors.blue[900]),
                 textButtonTheme: TextButtonThemeData(
                   style: TextButton.styleFrom(
                     primary: Colors.blueAccent, // This is a custom color variable
@@ -294,8 +286,6 @@ class Root extends StatelessWidget {
                 '/Register': (context) => Register(),
                 '/Alert': (context) => Alert(),
                 '/Share': (context) => Share(),
-                '/ShowCategories': (context) => ShowCategories(),
-                '/ShowStores': (context) => ShowStores(),
                 '/Settings': (context) => Settings(),
                 '/ChangePassword': (context) => ChangePassword(),
                 '/DeleteAccount': (context) => DeleteAccount(),

@@ -216,10 +216,6 @@ class InviteeList extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(
-                  'assets/crayon-2086.png',
-                  fit: BoxFit.scaleDown,
-                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16),
                   child:  Text(
